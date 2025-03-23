@@ -1,4 +1,4 @@
-# automation-lab-gcp
+# automation-lab
 
 ## Overview
 
