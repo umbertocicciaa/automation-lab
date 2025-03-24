@@ -25,6 +25,7 @@ variable "subnet_name" {
   description = "Subnet name"
   type        = string
 }
+
 variable "ip_cidr" {
   description = "ip block"
   type        = string
@@ -44,4 +45,10 @@ variable "machine_type" {
 variable "machine_image" {
   description = "Machine image"
   type        = string
+}
+
+#firewall
+variable "firewall_rule" {
+  default = "ssh"
+  type    = string
 }

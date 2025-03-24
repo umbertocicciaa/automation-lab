@@ -29,3 +29,13 @@ resource "google_compute_instance" "instance" {
   }
 
 }
+
+resource "google_compute_firewall" "ssh-rule" {
+  name = var.firewall_rule
+  network = google_compute_network.compute_vpc.name
+  allow {
+    protocol = "tcp"
+    ports = ["22"]
+  }
+  source_ranges = ["0.0.0.0/0"]
+}
