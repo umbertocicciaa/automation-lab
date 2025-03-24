@@ -18,19 +18,14 @@ resource "google_compute_instance" "instance" {
   allow_stopping_for_update = true
 
   network_interface {
-    network    = "compute_vpc"
-    subnetwork = "compute_subnet"
+    subnetwork = google_compute_subnetwork.compute_subnet.name
+    access_config {}
   }
 
   boot_disk {
     initialize_params {
       image = var.machine_image
     }
-  }
-
-  network_interface {
-    network = "default"
-    access_config {}
   }
 
 }
