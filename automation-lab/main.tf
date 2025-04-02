@@ -15,9 +15,11 @@ module "subnet" {
 
 # vm
 module "instance_template" {
-  source     = "./modules/instance_template"
-  region     = var.project_region
-  project_id = var.project_id
+  source                 = "./modules/instance_template"
+  region                 = var.project_region
+  project_id             = var.project_id
+  create_service_account = false
+  service_account        = { email = module.service_account.email }
 }
 
 module "vm" {
