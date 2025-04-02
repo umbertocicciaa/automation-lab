@@ -20,6 +20,7 @@ module "instance_template" {
   project_id             = var.project_id
   create_service_account = false
   service_account        = { email = module.service_account.email }
+  network = module.vpc.network_name
 }
 
 module "vm" {
