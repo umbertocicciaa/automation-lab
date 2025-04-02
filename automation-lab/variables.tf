@@ -10,9 +10,7 @@ variable "project_region" {
 }
 
 # vm
-variable "instance_template" {
-  type = string
-}
+
 
 # bucket
 variable "bucket_location" {

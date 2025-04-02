@@ -11,9 +11,15 @@ module "subnet" {
   subnets      = var.subnets
 }
 
+module "instance_template" {
+  source = "./modules/instance_template"
+  region = var.project_region
+  project_id = var.project_id
+}
+
 module "vm" {
   source            = "./modules/compute_instance"
-  instance_template = var.instance_template
+  instance_template = module.instance_template.name
 }
 
 module "bucket" {
