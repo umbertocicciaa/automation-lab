@@ -31,6 +31,7 @@ module "service_account" {
   source     = "./modules/simple-sa"
   project_id = var.project_id
   name       = var.service_account_name
+  project_roles = var.service_account_roles
 }
 
 # bucket
