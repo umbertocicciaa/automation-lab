@@ -20,18 +20,18 @@ module "instance_template" {
   project_id             = var.project_id
   create_service_account = false
   service_account        = { email = module.service_account.email }
-  network = module.vpc.network_name
+  subnetwork             = values(module.subnet.subnets)[0].self_link 
 }
 
 module "vm" {
   source            = "./modules/compute_instance"
-  instance_template = module.instance_template.name
+  instance_template = module.instance_template.self_link
 }
 
 module "service_account" {
-  source     = "./modules/simple-sa"
-  project_id = var.project_id
-  name       = var.service_account_name
+  source        = "./modules/simple-sa"
+  project_id    = var.project_id
+  name          = var.service_account_name
   project_roles = var.service_account_roles
 }
 
