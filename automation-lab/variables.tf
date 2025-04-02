@@ -47,3 +47,13 @@ variable "subnets" {
   }))
   description = "The list of subnets being created"
 }
+
+# sa
+variable "service_account_name" {
+  type = string
+}
+
+variable "service_account_roles" {
+  type    = list(string)
+  default = []
+}

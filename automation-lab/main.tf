@@ -1,3 +1,4 @@
+# network
 module "vpc" {
   source       = "./modules/vpc"
   project_id   = var.project_id
@@ -11,9 +12,11 @@ module "subnet" {
   subnets      = var.subnets
 }
 
+
+# vm
 module "instance_template" {
-  source = "./modules/instance_template"
-  region = var.project_region
+  source     = "./modules/instance_template"
+  region     = var.project_region
   project_id = var.project_id
 }
 
@@ -22,6 +25,13 @@ module "vm" {
   instance_template = module.instance_template.name
 }
 
+module "service_account" {
+  source     = "./modules/simple-sa"
+  project_id = var.project_id
+  name       = var.service_account_name
+}
+
+# bucket
 module "bucket" {
   source     = "./modules/simple_bucket"
   project_id = var.project_id
